@@ -25,10 +25,10 @@ public class Lexer {
         this.tokens = new ArrayList<>();
         clean();
         this.code = code.toCharArray();
-        getSymbol();
+        get_symbol();
     }
     
-    private void getSymbol () {
+    private void get_symbol () {
         while (index < code.length && !error) {
             if (' ' != code[index]) q1();
             index++;
@@ -52,7 +52,7 @@ public class Lexer {
     
     private void q2 () {
         if (index < code.length) c = code[index];
-        else returnSymbol();
+        else return_symbol();
         
         if (Character.isDigit(c)) {
             symbol += c;
@@ -66,7 +66,7 @@ public class Lexer {
             symbol += c;
             index++;
             q2();
-        } else returnSymbol();
+        } else return_symbol();
     }
     
     @SuppressWarnings("empty-statement")
@@ -95,7 +95,7 @@ public class Lexer {
         }
         
         index++;
-        returnSymbol();
+        return_symbol();
     }
     
     private void q4 () {
@@ -106,12 +106,12 @@ public class Lexer {
         if (c != '}') q4();
         else {
             index++;
-            getSymbol();
+            get_symbol();
         }
     }
     
-    private void returnSymbol () {
-        if (isReservedWord(symbol)) type = "res";
+    private void return_symbol () {
+        if (is_reserved_word(symbol)) type = "res";
         // TODO: Fix this
         if (!" ".equals(symbol) && !"".equals(symbol))
             tokens.add(new Token(type, symbol));
@@ -119,10 +119,10 @@ public class Lexer {
         symbol = "";
         type = "";
         c = ' ';
-        getSymbol();
+        get_symbol();
     }
     
-    private boolean isReservedWord (String word) {
+    private boolean is_reserved_word (String word) {
         if (word.equalsIgnoreCase("if")) return true;
         else if (word.equalsIgnoreCase("then")) return true;
         else if (word.equalsIgnoreCase("end")) return true;
@@ -144,7 +144,7 @@ public class Lexer {
         error = false;
     }
     
-    public ArrayList<Token> getTokens () {
+    public ArrayList<Token> get_tokens () {
         if (error) tokens.clear();
         return tokens;
     }

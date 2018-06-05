@@ -171,10 +171,10 @@ public class Editor extends javax.swing.JFrame {
     private void btnCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompileActionPerformed
         // TODO add your handling code here:
         Lexer les = new Lexer(txtCode.getText());
-        ArrayList<Token> tokens = les.getTokens();
+        ArrayList<Token> tokens = les.get_tokens();
         
         tokens.stream().forEach((token) -> {
-            System.out.println(token.getLexeme() + "->" + token.getSymbol());
+            System.out.println(token.get_lexeme() + "->" + token.get_symbol());
         });
     }//GEN-LAST:event_btnCompileActionPerformed
 

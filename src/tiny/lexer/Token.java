@@ -18,6 +18,6 @@ public class Token {
         this.symbol = symbol;
     }
     
-    public String getLexeme () { return lexeme; }
-    public String getSymbol () { return symbol; }
+    public String get_lexeme () { return lexeme; }
+    public String get_symbol () { return symbol; }
 }
